@@ -1,0 +1,30 @@
+Orderer:
+  OrdererType: etcdraft
+  Addresses:
+    - orderer.parentcompany.com:7050
+  EtcdRaft:
+    Consenters:
+      - Host: orderer.parentcompany.com
+        Port: 7050
+        ClientTLSCert: crypto-config/ordererOrganizations/parentcompany.com/orderers/orderer.parentcompany.com/tls/server.crt
+        ServerTLSCert: crypto-config/ordererOrganizations/parentcompany.com/orderers/orderer.parentcompany.com/tls/server.crt
+  Organizations:
+    - *ParentCompany
+  Capabilities:
+    Channel: &ChannelCapabilities
+      V2_0: true
+    Orderer: &OrdererCapabilities
+      V2_0: true
+  Policies:
+    Readers:
+      Type: Signature
+      Rule: "OR('ParentCompany.member')"
+    Writers:
+      Type: Signature
+      Rule: "OR('ParentCompany.member')"
+    Admins:
+      Type: Signature
+      Rule: "OR('ParentCompany.admin')"
+    BlockValidation:
+      Type: Signature
+      Rule: "OR('ParentCompany.member')"

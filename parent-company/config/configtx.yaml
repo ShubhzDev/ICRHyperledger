@@ -1,0 +1,21 @@
+Organizations:
+  - &ParentCompany
+    Name: ParentCompany
+    ID: ParentCompanyMSP
+    MSPDir: crypto-config/ordererOrganizations/parentcompany.com/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('ParentCompany.admin', 'ParentCompany.peer', 'ParentCompany.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('ParentCompany.admin', 'ParentCompany.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('ParentCompany.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('ParentCompany.peer')"
+    AnchorPeers:
+      - Host: peer0.parentcompany.com
+        Port: 7051
