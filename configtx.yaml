@@ -115,11 +115,14 @@ Orderer: &OrdererDefaults
     Admins:
       Type: ImplicitMeta
       Rule: "MAJORITY Admins"
+    BlockValidation:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
   EtcdRaft:
     Consenters:
       - Host: orderer.example.com
         Port: 7050
-        ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
+        ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/ca.crt
         ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
 
 Channel: &ChannelDefaults
@@ -165,6 +168,7 @@ Profiles:
 
   mychannel:
     <<: *ChannelDefaults
+    Consortium: SampleConsortium  # Add this line to specify the consortium
     Application:
       <<: *ApplicationDefaults
       Organizations:
