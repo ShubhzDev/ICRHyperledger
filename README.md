@@ -1,9 +1,9 @@
 Architecture Components
 
 Organizations:
-Org1: Represents subsidiary CompanyA.
-Org2: Represents subsidiary CompanyB.
-ParentOrg: Represents the parent company that maintains the reconciled ledger.
+• Org1: Represents subsidiary CompanyA.
+• Org2: Represents subsidiary CompanyB.
+• ParentOrg: Represents the parent company that maintains the reconciled ledger.
 
 Peers:
 Peer0.Org1: Peer node for Org1.
