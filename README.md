@@ -40,30 +40,14 @@ Matched transactions are marked as reconciled.
 
 ##Diagram
 Here's a high-level architecture diagram representing the updated structure:
-                         +---------------------------------+
-                         |          Orderer               |
-                         +---------------+-----------------+
-                                         |
-                                         |
-                                 +-------+-------+
-                                 |               |
-                                 | mychannel     |
-                                 |               |
-                                 +-------+-------+
-                                         |
-          +------------------------------+-----------------------------+
-          |                              |                             |
-+---------+---------+          +---------+---------+         +---------+---------+
-|                   |          |                   |         |                   |
-|    Peer0.Org1     |          |    Peer0.Org2     |         |  Peer0.ParentOrg  |
-|    (CompanyA)     |          |    (CompanyB)     |         |  (Parent Company) |
-|                   |          |                   |         |                   |
-+---------+---------+          +---------+---------+         +---------+---------+
-          |                              |                             |
-          |                              |                             |
-+---------+---------+          +---------+---------+         +---------+---------+
-|    CA.Org1        |          |    CA.Org2        |         |    CA.ParentOrg   |
-+-------------------+          +-------------------+         +-------------------+
+graph TD
+    Orderer --> mychannel
+    Peer0.Org1 --> mychannel
+    Peer0.Org2 --> mychannel 
+    Peer0.ParentOrg --> mychannel
+    CA.Org1 --> Peer0.Org1
+    CA.Org2 --> Peer0.Org2
+    CA.ParentOrg --> Peer0.ParentOrg
 
 ##Detailed Explanation
 
