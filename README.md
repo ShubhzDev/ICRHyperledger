@@ -89,3 +89,11 @@ How to Start Project:-
 ./teardown.sh
 ./generateArtifacts.sh
 ./start_network.sh
+
+Important Components:-
+Organizations - ParentOrg,Org1,Org2
+Orderer - OrdererOrg
+Channel - myChannel(all will have same channel)
+Peer - org1.peer0 , org2.peer1 , parentOrg.peer0
+Ledger - L(all will have same ledger,can restrict access on chaincode)
+Smart Contract - InterCompany
