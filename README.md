@@ -90,7 +90,7 @@ How to Start Project:-
 ./generateArtifacts.sh
 ./start_network.sh
 
-Important Components:-
+#Design of Network :-
 Organizations - ParentOrg,Org1,Org2
 Orderer - OrdererOrg
 Channel - myChannel(all will have same channel)
