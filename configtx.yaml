@@ -1,18 +1,18 @@
 Organizations:
   - &OrdererOrg
-    Name: OrdererOrg
+    Name: OrdererMSP
     ID: OrdererMSP
     MSPDir: crypto-config/ordererOrganizations/example.com/msp
     Policies:
       Readers:
         Type: Signature
-        Rule: "OR('OrdererMSP.member')"
+        Rule: "OR('OrdererMSP.admin', 'OrdererMSP.peer', 'OrdererMSP.client')"
       Writers:
         Type: Signature
-        Rule: "OR('OrdererMSP.member')"
+        Rule: "OR('OrdererMSP.admin', 'OrdererMSP.peer', 'OrdererMSP.client')"
       Admins:
         Type: Signature
-        Rule: "OR('OrdererMSP.admin')"
+        Rule: "OR('OrdererMSP.admin', 'OrdererMSP.peer', 'OrdererMSP.client')"
 
 
   - &Org1
@@ -25,10 +25,10 @@ Organizations:
         Rule: "OR('Org1MSP.admin', 'Org1MSP.peer', 'Org1MSP.client')"
       Writers:
         Type: Signature
-        Rule: "OR('Org1MSP.admin', 'Org1MSP.client')"
+        Rule: "OR('Org1MSP.admin', 'Org1MSP.peer', 'Org1MSP.client')"
       Admins:
         Type: Signature
-        Rule: "OR('Org1MSP.admin')"
+        Rule: "OR('Org1MSP.admin', 'Org1MSP.peer', 'Org1MSP.client')"
     AnchorPeers:
       - Host: peer0.org1.example.com
         Port: 7051
@@ -43,13 +43,13 @@ Organizations:
         Rule: "OR('Org2MSP.admin', 'Org2MSP.peer', 'Org2MSP.client')"
       Writers:
         Type: Signature
-        Rule: "OR('Org2MSP.admin', 'Org2MSP.client')"
+        Rule: "OR('Org2MSP.admin', 'Org2MSP.peer', 'Org2MSP.client')"
       Admins:
         Type: Signature
-        Rule: "OR('Org2MSP.admin')"
+        Rule: "OR('Org2MSP.admin', 'Org2MSP.peer', 'Org2MSP.client')"
     AnchorPeers:
       - Host: peer0.org2.example.com
-        Port: 8051
+        Port: 9051
 
   - &ParentOrg
     Name: ParentOrgMSP
@@ -160,7 +160,7 @@ Profiles:
           Type: ImplicitMeta
           Rule: "ANY Writers"
     Consortiums:
-      SampleConsortium:
+      MyConsortium:
         Organizations:
           - *Org1
           - *Org2
@@ -168,7 +168,7 @@ Profiles:
 
   mychannel:
     <<: *ChannelDefaults
-    Consortium: SampleConsortium  # Add this line to specify the consortium
+    Consortium: MyConsortium  # Add this line to specify the consortium
     Application:
       <<: *ApplicationDefaults
       Organizations:

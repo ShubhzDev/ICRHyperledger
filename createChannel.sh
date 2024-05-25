@@ -33,6 +33,6 @@ updateAnchorPeers(){
 setup_channel(){
 
 createChannel
-joinChannel
-updateAnchorPeers
+# joinChannel
+# updateAnchorPeers
 }
