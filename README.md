@@ -84,3 +84,8 @@ ParentOrg represents the parent company. It has its own peer (Peer0.ParentOrg), 
 - Use CLI or SDK to add transactions, match them, and record reconciled transactions in the parent company's ledger.
 
 By following this architecture, you can effectively manage and reconcile intercompany transactions between subsidiaries, maintaining a clear and accurate ledger for the parent company.
+
+How to Start Project:-
+./teardown.sh
+./generateArtifacts.sh
+./start_network.sh
